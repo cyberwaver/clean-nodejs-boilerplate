@@ -12,7 +12,6 @@ class BaseController {
   }
 
   task(asyncTask) {
-    this.__executionContext = {};
     this.__executionContext.asyncTask = asyncTask;
     return this;
   }
@@ -30,6 +29,7 @@ class BaseController {
   }
 
   async execute(res) {
+    console.log("EXECUTE: ", this.__executionContext);
     const { asyncTask, onFailure, onSuccess } = this.__executionContext;
     asyncTask
       .then((result) => {

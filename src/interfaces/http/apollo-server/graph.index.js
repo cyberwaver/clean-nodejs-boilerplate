@@ -18,7 +18,8 @@ const userGraph = ({ container }) => (options = {}) => {
     playground: true,
     introspection: true,
     context: ({ req }) => {
-      const graphContainer = container.register({ currentUser: asValue(req.user) }).createScope();
+      const graphContainer = container.createScope();
+      if (req.user) graphContainer.register({ currentUser: asValue(req.user) });
       return {
         user: req.user,
         container: graphContainer.cradle,

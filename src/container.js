@@ -5,7 +5,7 @@ const Application = require("./Application");
 const Server = require("./interfaces/http/Server");
 const router = require("./interfaces/http/router");
 const logger = require("./logging/logger");
-const userGraph = require("./interfaces/http/apollo-server/graph.index");
+const graph = require("./interfaces/http/apollo-server/graph.index");
 const registerListeners = require("./event/registerListeners");
 
 const container = createContainer();
@@ -34,7 +34,7 @@ container
 
 //GRAPHS
 container.register({
-  userGraph: asFunction(userGraph).singleton(),
+  graph: asFunction(graph).singleton(),
 });
 
 //usecases

@@ -1,9 +1,10 @@
-const useController = ({ container }) => (controllerName) => (req) => {
-  container.register("currentUser", req.user);
-  const scopedContainer = container.createScope();
-  const controller = scopedContainer.resolve(controllerName);
-  console.log("ccc: ", controller.router);
-  return controller.router;
+const path = require("path");
+const { ApplicationException } = require("../../../exceptions");
+
+const useController = () => (controllerName) => {
+  const Controller = require(path.join(__dirname, "../controllers/", controllerName));
+  if (Controller) return new Controller().router;
+  throw new ApplicationException(`Controller with name: ${controllerName} not found`);
 };
 
 module.exports = useController;

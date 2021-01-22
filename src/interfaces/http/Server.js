@@ -3,14 +3,7 @@ const cors = require("cors");
 const enforce = require("express-sslify");
 
 class Server {
-  constructor({
-    config,
-    router,
-    logger,
-    userGraph,
-    authTokenSerializerMiddleware,
-    isAuthenticatedMiddleware,
-  }) {
+  constructor({ config, router, logger, graph, authTokenSerializerMiddleware, isAuthenticatedMiddleware }) {
     this.config = config;
     this.logger = logger;
     this.express = express();
@@ -20,9 +13,7 @@ class Server {
     this.express.disable("x-powered-by");
     this.express.use(cors());
     this.express.use("/graph/user", authTokenSerializerMiddleware("USER"));
-    // this.express.use("/graph", isAuthenticatedMiddleware());
-    userGraph({ app: this.express, path: "/graph/user" });
-    // this.express.use("/adminGraph", adminGraph);
+    graph({ app: this.express, path: "/graph" });
     this.express.use(router);
   }
 

@@ -12,6 +12,7 @@ module.exports = ({
   loggerMiddleware,
   errorHandlerMiddleware,
   useController,
+  isAuthenticatedMiddleware,
 }) => {
   const router = Router();
   /* istanbul ignore if */
@@ -29,9 +30,12 @@ module.exports = ({
     .use(cors())
     .use(bodyParser.urlencoded({ extended: false }))
     .use(bodyParser.json())
-    .use(compression());
+    .use(compression())
+    .use(containerMiddleware);
 
-  router.use("/public", useController("publicController"));
+  router.use("/auth", useController("AuthController"));
+
+  router.use("/user", isAuthenticatedMiddleware(), useController("UserController"));
 
   router.use(errorHandlerMiddleware);
 
