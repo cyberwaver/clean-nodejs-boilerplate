@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-NG">
+  <%- include ("../partials/header") %>
+  <body>
+    <div class="wrapper">
+      <%- include ("../partials/banner") %>
+      <main class="content-wrapper">
+        <div>
+          <h4 style="text-align: center; margin: 20px 0 20px 0">Welcome to NBA Lagos</h4>
+          <img src="https://res.cloudinary.com/nba-lagos/image/upload/v1608675020/App/email_hero_image.png" />
+        </div>
+        <div class="content">
+          <p>
+            Dear <%= firstName %> <%= lastName %>, <br />
+            Welcome to the NBA Lagos Branch.
+          </p>
+          <p>
+            Thanks for signing up to the new NBA Lagos portal. <br /><br />
+            To activate your account, please verify your email by clicking on the customized link below
+          </p>
+        </div>
+
+        <a href="<%= url %>"><button>Verify email</button></a>
+        <div style="text-align: center; font-size: 12px; margin-top: 20px" class="extra">
+          <p style="line-height: 22px">
+            If the above button doesn't work, copy and paste this link to your browser
+            <a href="#" style="font-size: 10px; line-height: 14px"><%= url %></a>
+          </p>
+          <p>
+            <a style="text-align: center; text-decoration: none; color: #000" href="#">Unsubscribe</a>
+          </p>
+        </div>
+      </main>
+      <%- include ("../partials/footer") %>
+    </div>
+  </body>
+</html>

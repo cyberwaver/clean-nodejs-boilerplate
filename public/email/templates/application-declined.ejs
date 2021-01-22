@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-NG">
+  <%- include ("../partials/header") %>
+  <body>
+    <div class="wrapper">
+      <%- include ("../partials/banner") %>
+      <main class="content-wrapper">
+        <div>
+          <h4 style="text-align: center; margin: 20px 0 20px 0">Your Application has been Declined</h4>
+        </div>
+        <div class="content">
+          <p>Dear <%= firstName %> <%= lastName %>, <br /></p>
+          <p>Your application for <%= application.name %> has been declined.</p>
+          <p>Kindly submit a new application or contact us.</p>
+          <div class="extra">
+            <p>
+              Thanks <br />
+              NBA Lagos Branch
+            </p>
+          </div>
+        </div>
+      </main>
+      <%- include ("../partials/footer") %>
+    </div>
+  </body>
+</html>

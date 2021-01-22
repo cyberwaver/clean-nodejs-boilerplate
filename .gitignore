@@ -1,0 +1,35 @@
+# Logs
+*.log
+
+.vscode
+
+config/environments/development.js
+
+# Node
+node_modules/
+
+# Unit test / coverage reports
+coverage/
+.nyc_output
+
+# OS auto-generated files
+.DS_Store
+._*
+
+
+# Vim
+*~
+*.swp
+*.swo
+
+# IDE files
+.idea/
+
+.env.dev
+.prettierrc
+# production env files
+.env
+src/config/env/prod.env.json
+
+####
+code-test.js

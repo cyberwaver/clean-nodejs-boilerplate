@@ -1,0 +1,13 @@
+{
+  "diff": true,
+  "extension": ["js"],
+  "package": "../package.json",
+  "reporter": "spec",
+  "slow": 1500,
+  "timeout": 20000,
+  "recursive": true,
+  "file": ["test/setup.js"],
+  "ui": "bdd",
+  "spec": "test/usecases",
+  "watch-ignore": ["lib/vendor"]
+}
