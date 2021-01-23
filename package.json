@@ -1,7 +1,7 @@
 {
-  "name": "nba-lagos-api",
+  "name": "clean-nodejs-boilerplate",
   "version": "0.0.0",
-  "description": "NBA Lagos API",
+  "description": "A nodejs boilerplate that can be used with different nodejs framework, it is independent on infrastructure which follows the clean architecture design",
   "main": "index.js",
   "scripts": {
     "start": "node -r dotenv/config index.js",

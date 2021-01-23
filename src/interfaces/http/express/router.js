@@ -6,8 +6,7 @@ const compression = require("compression");
 const methodOverride = require("method-override");
 const { asValue } = require("awilix");
 
-module.exports = ({
-  config,
+module.exports = ({ config }) => ({
   containerMiddleware,
   loggerMiddleware,
   errorHandlerMiddleware,

@@ -1,5 +1,5 @@
 const httpStatus = require("http-status");
-const { NotFoundException } = require("../../../exceptions");
+const { NotFoundException } = require("../../../../exceptions");
 
 class BaseController {
   constructor() {

@@ -3,10 +3,13 @@ const cors = require("cors");
 const enforce = require("express-sslify");
 
 class Server {
-  constructor({ config, router, logger, graph, authTokenSerializerMiddleware, isAuthenticatedMiddleware }) {
+  constructor({ config, logger }) {
     this.config = config;
     this.logger = logger;
     this.express = express();
+  }
+
+  load({ router, graph, authTokenSerializerMiddleware }) {
     if (this.express.get("env") === "production") {
       this.express.use(enforce.HTTPS({ trustProtoHeader: true }));
     }
@@ -15,6 +18,7 @@ class Server {
     this.express.use("/graph/user", authTokenSerializerMiddleware("USER"));
     graph({ app: this.express, path: "/graph" });
     this.express.use(router);
+    return this;
   }
 
   start() {

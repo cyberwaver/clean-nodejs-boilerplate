@@ -22,11 +22,11 @@ const email = new Email({
 });
 
 const emailTypeHash = {
-  WELCOME_EMAIL: ["Welcome to NBA Lagos Portal", "welcome"],
+  WELCOME_EMAIL: ["Welcome to Clean Nodejs Boilerplate", "welcome"],
   PASSWORD_RESET_INSTRUCTION: ["Password Reset Requested", "password-reset"],
   PASSWORD_RESET_SUCCESSFUL: ["Password Reset", "password-reset-successful"],
   PASSWORD_CHANGED: ["Password Changed", "password-changed"],
-  EMAIL_VERIFICATION: ["Email Verification Requested", "email-verification"]
+  EMAIL_VERIFICATION: ["Email Verification Requested", "email-verification"],
 };
 
 class EmailService {

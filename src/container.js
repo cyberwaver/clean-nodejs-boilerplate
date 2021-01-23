@@ -1,12 +1,9 @@
 const { createContainer, asClass, asFunction, asValue, Lifetime } = require("awilix");
-const { scopePerRequest } = require("awilix-express");
 const config = require("../config/config.index");
 const Application = require("./Application");
-const Server = require("./interfaces/http/Server");
-const router = require("./interfaces/http/router");
 const logger = require("./logging/logger");
-const graph = require("./interfaces/http/apollo-server/graph.index");
 const registerListeners = require("./event/registerListeners");
+const expressServer = require("./interfaces/http/express/express.loader");
 
 const container = createContainer();
 
@@ -14,10 +11,9 @@ const container = createContainer();
 container
   .register({
     app: asClass(Application).singleton(),
-    server: asClass(Server).singleton(),
+    expressServer: asFunction(expressServer).singleton(),
   })
   .register({
-    router: asFunction(router).singleton(),
     logger: asFunction(logger).singleton(),
   })
   .register({
@@ -29,13 +25,7 @@ container
   })
   .register({
     registerListeners: asFunction(registerListeners).singleton(),
-    containerMiddleware: asValue(scopePerRequest(container)),
   });
-
-//GRAPHS
-container.register({
-  graph: asFunction(graph).singleton(),
-});
 
 //usecases
 container.loadModules(["src/usecases/*/*.js"], {
@@ -46,15 +36,6 @@ container.loadModules(["src/usecases/*/*.js"], {
   resolverOptions: {
     lifetime: Lifetime.SINGLETON,
     register: asClass,
-  },
-});
-
-// Middlewares
-container.loadModules(["src/interfaces/http/middlewares/**/*.js"], {
-  formatName: "camelCase",
-  resolverOptions: {
-    lifetime: Lifetime.SINGLETON,
-    register: asFunction,
   },
 });
 

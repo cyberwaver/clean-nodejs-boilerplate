@@ -1,5 +1,5 @@
 const path = require("path");
-const { ApplicationException } = require("../../../exceptions");
+const { ApplicationException } = require("../../../../exceptions");
 
 const useController = () => (controllerName) => {
   const Controller = require(path.join(__dirname, "../controllers/", controllerName));

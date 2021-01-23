@@ -1,6 +1,6 @@
 const { ApolloServer, gql } = require("apollo-server-express");
-const { UserTypeDef, UserResolvers } = require("./user.schema");
-const { AuthenticationTypeDef, AuthenticationResolvers } = require("./authentication.schema");
+const { UserTypeDef, UserResolvers } = require("../graphql-schema/user.schema");
+const { AuthenticationTypeDef, AuthenticationResolvers } = require("../graphql-schema/authentication.schema");
 
 const Default = gql`
   type Query {

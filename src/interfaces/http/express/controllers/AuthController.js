@@ -5,6 +5,7 @@ const router = Router();
 
 class AuthController extends BaseController {
   get router() {
+    router.get("/", (req, res) => res.send("THIS IS THE AUTH INDEX"));
     router.post("/user", this.signupUser.bind(this));
     router.post("/user/token", this.generateUserAuthToken.bind(this));
     router.put("/user/email-verification-request", this.requestUserEmailVerification.bind(this));
